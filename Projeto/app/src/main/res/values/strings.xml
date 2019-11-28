@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Projeto</string>
+    <string name="title_activity_cadastro__lista">Cadastro_Lista</string>
+    <string name="adicionar_lista">Adicionar Nova Lista</string>
+    <string name="sair">Sair</string>
+    <string name="nome">Nome</string>
+    <string name="nome_lista">Nome da Lista</string>
+    <string name="salvar">Salvar</string>
+
+</resources>
