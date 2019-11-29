@@ -4,6 +4,8 @@
 
     <item
         android:id="@+id/it_adicionar_lista"
+        android:icon="@drawable/adicionar"
+        app:showAsAction="ifRoom"
         android:title="@string/adicionar_lista" />
 
     <item

@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,22 +21,24 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private ListaDAO dao;
+
+    private ListView listView;
     private List<Lista> listas;
     private List<Lista> listasFiltradas = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setup();
         setContentView(R.layout.activity_main);
-        ListView listView = findViewById(R.id.listView_Lista);
-
+        //ListView listView = findViewById(R.id.listView_Lista);
+        setup();
+        //configClic();
         dao = new ListaDAO(this);
 
         listas = dao.obterTodos();
 
         listasFiltradas.addAll(listas);
 
-        AdapterLista adapter = new AdapterLista(this, listas);
+        AdapterLista adapter = new AdapterLista(this, listasFiltradas);
         listView.setAdapter(adapter);
 //        System.out.println("1---->>1PASSOU AQUI1<<-----1");
 //        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -49,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setup() {
 
+
+    private void setup() {
+        listView = findViewById(R.id.listView_Lista);
     }
 
     @Override
@@ -96,6 +101,13 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    public void onResume(){
+        super.onResume();
+        listas = dao.obterTodos();
+        listasFiltradas.clear();
+        listasFiltradas.addAll(listas);
+        listView.invalidateViews();
+    }
 //    private List<Lista> gerarDados() {
 //        //ArrayList<Lista> item = new ArrayList<Lista>();
 //        dao = new ListaDAO(this);

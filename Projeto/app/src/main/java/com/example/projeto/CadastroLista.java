@@ -27,8 +27,8 @@ public class CadastroLista extends AppCompatActivity {
                 salvar();
             }
         });
-    }
 
+    }
 
     private void setup() {
         et_nome_lista = findViewById(R.id.et_nome_lista);
