@@ -34,4 +34,9 @@ public class ListaDAO {
         }
         return listas;
     }
+
+    public void excluir(Lista a) {
+        banco.delete("lista","id = ?", new String[]{a.getId().toString()});
+
+    }
 }

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,19 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
         AdapterLista adapter = new AdapterLista(this, listasFiltradas);
         listView.setAdapter(adapter);
-//        System.out.println("1---->>1PASSOU AQUI1<<-----1");
-//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                System.out.println("2---->>2PASSOU AQUI2<<-----2");
-//                Lista listaSelecionada = (Lista) adapterView.getItemAtPosition(i);
-//                Toast.makeText(MainActivity.this, listaSelecionada.getNome(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-
+        registerForContextMenu(listView);
     }
-
-
 
     private void setup() {
         listView = findViewById(R.id.listView_Lista);
@@ -107,6 +97,31 @@ public class MainActivity extends AppCompatActivity {
         listasFiltradas.clear();
         listasFiltradas.addAll(listas);
         listView.invalidateViews();
+    }
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater i = getMenuInflater();
+        i.inflate(R.menu.menu_contexto,menu);
+    }
+    public void excluir(MenuItem item) {
+        //5
+        AdapterView.AdapterContextMenuInfo menuInfo =
+                (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final Lista listaExcluir = listasFiltradas.get(menuInfo.position);
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Atenção")
+                .setMessage("Tem certesa que deseja excluir essa lista?")
+                .setNegativeButton("NÃO",null)
+                .setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        listasFiltradas.remove(listaExcluir);
+                        listas.remove(listaExcluir);
+                        dao.excluir(listaExcluir);
+                        listView.invalidateViews();
+                    }
+                }).create();
+        dialog.show();
     }
 //    private List<Lista> gerarDados() {
 //        //ArrayList<Lista> item = new ArrayList<Lista>();
