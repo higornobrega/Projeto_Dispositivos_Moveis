@@ -1,10 +1,27 @@
-package com.example.projeto;
+package com.example.projeto.Lista;
 
 import java.io.Serializable;
 
 public class Lista implements Serializable {
     private Integer id;
     private String nome;
+    private String nota;
+    private boolean checagem;
+
+    public boolean isChecagem() {
+        return checagem;
+    }
+    public void setChecagem(boolean checagem) {
+        this.checagem = checagem;
+    }
+
+    public String getNota() {
+        return nota;
+    }
+
+    public void setNota(String nota) {
+        this.nota = nota;
+    }
 
     public Integer getId() {
         return id;

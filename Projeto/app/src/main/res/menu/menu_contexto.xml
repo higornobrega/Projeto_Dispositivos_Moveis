@@ -4,5 +4,8 @@
 
     <item android:title="@string/excluir"
         android:onClick="excluir"/>
-    <item android:title="@string/Atualizar"/>
+    <item android:title="@string/Atualizar"
+        android:onClick="mostrarItem"/>
+    <item android:title="@string/novoItem"
+        android:onClick="listaItem"/>
 </menu>

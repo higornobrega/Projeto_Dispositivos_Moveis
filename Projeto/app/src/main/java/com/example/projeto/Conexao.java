@@ -18,9 +18,11 @@ public class Conexao extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table lista(id integer primary key autoincrement, " +
                 "nome varchar(50))");
+        db.execSQL("create table item(id integer primary key autoincrement, " +
+                "quant varchar(50), nome_item varchar(50), val varchar(50), id_lista integer, FOREIGN KEY (id_lista) REFERENCES lista(id))");
 
     }
-
+//, FOREIGN KEY (id_lista) REFERENCES lista(id)
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

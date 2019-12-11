@@ -1,24 +1,16 @@
-package com.example.projeto;
+package com.example.projeto.Lista;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+import com.example.projeto.R;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class AdapterLista extends ArrayAdapter<Lista> {
     private TextView tv_nomeLista;

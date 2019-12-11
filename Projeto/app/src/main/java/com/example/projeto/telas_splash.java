@@ -1,11 +1,11 @@
 package com.example.projeto;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.projeto.Lista.MainActivity;
 
 public class telas_splash extends Activity {
     private static int TEMPO_SPLASH = 3000;
