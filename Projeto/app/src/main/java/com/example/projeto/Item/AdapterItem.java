@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.projeto.Lista.Lista;
 import com.example.projeto.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,7 +52,8 @@ public class AdapterItem extends ArrayAdapter<Item> {
         Float total = v * a;
         String b = a.toString();
         String totalsrt = total.toString();
-        tv_val.setText(totalsrt);
+        DecimalFormat formatter = new DecimalFormat("#.00");
+        tv_val.setText(" R$" + formatter.format(total) );
         tv_quant.setText(b);
         tv_nomeItem.setText(listaItem.get(position).getNome_item());
         return linha_item;

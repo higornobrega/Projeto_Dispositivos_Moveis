@@ -52,11 +52,18 @@ public class CadastroLista extends AppCompatActivity {
         if (lista == null) {
             Lista lista = new Lista();
             lista.setNome(et_nome_lista.getText().toString());
-//            lista.setNota(et_nota.getText().toString());
-            long id = dao.inserir(lista);
-            Toast.makeText(this, "Lista inserida com Sucesso  ", Toast.LENGTH_SHORT)
-                    .show();
-            finish();
+
+            if (lista.getNome().equals("")) {
+                Toast.makeText(this, "Parametro inválido", Toast.LENGTH_SHORT)
+                        .show();
+            }else{
+                long id = dao.inserir(lista);
+                Toast.makeText(this, "Lista inserida com Sucesso  ", Toast.LENGTH_SHORT)
+                        .show();
+                finish();
+            }
+
+
         }else {
             lista.setNome(et_nome_lista.getText().toString());
 //            lista.setNota(et_nota.getText().toString());
