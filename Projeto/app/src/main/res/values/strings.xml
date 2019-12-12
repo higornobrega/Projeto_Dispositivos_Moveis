@@ -12,6 +12,7 @@
     <string name="addItem">Adicione seus Itens</string>
     <string name="checkList">Todos os Itens Comparados</string>
     <string name="quant">Quantidade</string>
+    <string name="nomeIt">Nome do Item</string>
     <string name="nprod">Nome do produto</string>
     <string name="valorUni">Valor Unitário</string>
     <string name="prodComp">O Produto ja está Comprado</string>

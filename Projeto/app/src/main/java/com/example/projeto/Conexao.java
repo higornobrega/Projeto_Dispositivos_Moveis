@@ -19,7 +19,7 @@ public class Conexao extends SQLiteOpenHelper {
         db.execSQL("create table lista(id integer primary key autoincrement, " +
                 "nome varchar(50))");
         db.execSQL("create table item(id integer primary key autoincrement, " +
-                "quant varchar(50), nome_item varchar(50), val varchar(50), id_lista integer, FOREIGN KEY (id_lista) REFERENCES lista(id))");
+                "quant interger, nome_item varchar(50), val REAL, id_lista integer, FOREIGN KEY (id_lista) REFERENCES lista(id))");
 
     }
 //, FOREIGN KEY (id_lista) REFERENCES lista(id)

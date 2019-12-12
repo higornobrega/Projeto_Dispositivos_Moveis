@@ -23,6 +23,7 @@ public class CadastrarItem extends AppCompatActivity {
     private EditText nb_val;
     private CheckBox cb_comprado;
     private Button salvar_it;
+    private Item itemAtualizar = null;
     private Item item = new Item();
     private ItemDAO dao;
     private ListaDAO dao_lista;
@@ -43,6 +44,7 @@ public class CadastrarItem extends AppCompatActivity {
             String b = Integer.toString(a);
             tv_id_lista.setText(lista.getNome().toString());
         }
+
     }
 
     private void configBut() {
@@ -56,22 +58,27 @@ public class CadastrarItem extends AppCompatActivity {
 
     private void salvar() {
         try {
-            //Item item = new Item();
-            String nome_item = et_nome_item.getText().toString();
-            String quantStr = nb_quant.getText().toString();
-            String valStr = nb_val.getText().toString();
-            Float val = Float.parseFloat(valStr);
-            Integer quantInt = Integer.parseInt(quantStr);
-            //nome_item varchar(50), val varchar(50), id_lista integer, FOREIGN KEY (id_lista) REFERENCES lista(id))
-            item.setQuant(quantInt);
-            item.setNome_item(nome_item);
-            item.setVal(val);
 
-            Intent i = getIntent();
-            lista = (Lista) i.getSerializableExtra("lista");
-            item.setId_lista(lista.getId());
-            dao.inserir(item);
-            finish();
+                //Item item = new Item();
+                //itemAtualizar = new Item();
+                String nome_item = et_nome_item.getText().toString();
+                String quantStr = nb_quant.getText().toString();
+                String valStr = nb_val.getText().toString();
+                Float val = Float.parseFloat(valStr);
+                Integer quantInt = Integer.parseInt(quantStr);
+                String cp = cb_comprado.getText().toString();
+                boolean cp2 = Boolean.getBoolean(cp);
+                //nome_item varchar(50), val varchar(50), id_lista integer, FOREIGN KEY (id_lista) REFERENCES lista(id))
+                item.setQuant(quantInt);
+                item.setNome_item(nome_item);
+                item.setVal(val);
+                //item.setComprado(cp2);
+
+                Intent i = getIntent();
+                lista = (Lista) i.getSerializableExtra("lista");
+                item.setId_lista(lista.getId());
+                dao.inserir(item);
+                finish();
 //            item.setQuant(quantInt);
 //
 //            item.setNome_item(et_nome_item.getText().toString());

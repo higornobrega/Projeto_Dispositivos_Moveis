@@ -1,5 +1,6 @@
 package com.example.projeto.Item;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -37,7 +38,7 @@ public class ItemDAO {
         List<Item> itens = new ArrayList<>();
         banco = conexao.getWritableDatabase();
         Cursor cursor = banco.rawQuery("SELECT * FROM item WHERE id_lista = " + id_listac, null);
-//        Cursor cursor = banco.query("item", new String[]{"id", "quant", "nome_item", "val", "id_Lista"},
+//        Cursor cursor = banco.query("item", new String[]{"id", "quant", "nome_item", "val", "comprado","id_Lista"},
 //                null,null,null,null,null);
         cursor.moveToFirst();
         while (!cursor.isAfterLast()){
@@ -53,10 +54,25 @@ public class ItemDAO {
         cursor.close();
         return itens;
     }
+    public void excluir(Item i){
+        banco.delete("item", "id = ?", new String[]{i.getId().toString()} );
+    }
     private void openDB() throws SQLException {
         if (this.banco == null) {
             this.banco = conexao.getWritableDatabase();
         }
+    }
+
+    public void atualizar(Item item){
+        ContentValues values = new ContentValues();
+        //"id", "quant", "nome_item", "val", "comprado","id_Lista"
+        values.put("quant", item.getQuant());
+        values.put("nome_item", item.getNome_item());
+        values.put("val", item.getVal());
+        values.put("id_Lista", item.getId_lista());
+//        values.put("nota", lista.getNota());
+        banco.update("lista", values, "id = ?", new String[]{item.getId().toString()});
+;
     }
 
     private void closeDB() throws SQLException {

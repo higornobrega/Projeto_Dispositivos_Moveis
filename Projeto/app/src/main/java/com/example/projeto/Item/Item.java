@@ -10,7 +10,7 @@ public class Item implements Serializable {
     private Integer id_lista;
     private  Integer quant;
     private String nome_item;
-    private float val;
+    private Float val;
     private boolean comprado;
 
     public Integer getId() {
@@ -37,11 +37,11 @@ public class Item implements Serializable {
         this.nome_item = nome_item;
     }
 
-    public float getVal() {
+    public Float getVal() {
         return val;
     }
 
-    public void setVal(float val) {
+    public void setVal(Float val) {
         this.val = val;
     }
 
@@ -67,7 +67,9 @@ public class Item implements Serializable {
         cv.put("quant", getQuant());
         cv.put("nome_item", getNome_item());
         cv.put("val", getVal());
+        //cv.put("comprado", isComprado());
         cv.put("id_Lista", getId_lista());
+
         return cv;
     }
 
