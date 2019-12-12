@@ -43,11 +43,15 @@ public class AdapterItem extends ArrayAdapter<Item> {
 //        Integer quantInt = Integer.parseInt(quantStr);
 
         tv_nomeItem = linha_item.findViewById(R.id.tv_nomeItem);
+
         Float v = listaItem.get(position).getVal();
+
         String l = v.toString();
         Integer a = listaItem.get(position).getQuant();
+        Float total = v * a;
         String b = a.toString();
-        tv_val.setText(l);
+        String totalsrt = total.toString();
+        tv_val.setText(totalsrt);
         tv_quant.setText(b);
         tv_nomeItem.setText(listaItem.get(position).getNome_item());
         return linha_item;

@@ -79,20 +79,7 @@ public class CadastrarItem extends AppCompatActivity {
                 item.setId_lista(lista.getId());
                 dao.inserir(item);
                 finish();
-//            item.setQuant(quantInt);
-//
-//            item.setNome_item(et_nome_item.getText().toString());
-//
-//
-//            Integer valInt = Integer.parseInt(valStr);
-//            item.setVal(valInt);
-//
-//            Intent i = getIntent();
-//            if (i.hasExtra("lista")) {
-//                lista = (Lista) i.getSerializableExtra("lista");
-//                Integer a = lista.getId();
-//                String b = Integer.toString(a);
-//                item.setId_lista(lista.getId());
+
 //            }
         } catch (Exception e) {
             Toast.makeText(this, "Erro ao Salvar Item", Toast.LENGTH_LONG).show();
