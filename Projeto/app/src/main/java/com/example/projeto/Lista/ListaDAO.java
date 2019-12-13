@@ -80,6 +80,7 @@ public class ListaDAO {
     public void atulizar(Lista lista){
         ContentValues values = new ContentValues();
         values.put("nome", lista.getNome());
+
 //        values.put("nota", lista.getNota());
         banco.update("lista", values, "id = ?", new String[]{lista.getId().toString()});
 

@@ -18,6 +18,8 @@
     <string name="quatid">Quantidade</string>
     <string name="valorI">Valor Total</string>
     <string name="real">R$</string>
+    <string name="filt0">Filtrar os Itens com valor 0</string>
+    <string name="comp">Compartilhar</string>
     <string name="prodComp">O Produto ja está Comprado</string>
 
 </resources>

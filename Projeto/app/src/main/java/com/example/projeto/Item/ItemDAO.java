@@ -28,11 +28,6 @@ public class ItemDAO {
         closeDB();
     }
 
-//    private Integer id;
-//    private Integer id_lista;
-//    private  Integer quant;
-//    private String nome_item;
-//    private float val;
 //
     public List<Item> obterTodos(Integer id_listac){
         List<Item> itens = new ArrayList<>();
@@ -54,6 +49,29 @@ public class ItemDAO {
         cursor.close();
         return itens;
     }
+
+    public List<Item> obterTodosCom0(){
+        List<Item> itens = new ArrayList<>();
+        banco = conexao.getWritableDatabase();
+        Cursor cursor = banco.rawQuery("SELECT * FROM item WHERE val = " + 0, null);
+//        Cursor cursor = banco.query("item", new String[]{"id", "quant", "nome_item", "val", "comprado","id_Lista"},
+//                null,null,null,null,null);
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()){
+            Item i = new Item();
+            i.setId(cursor.getInt(0));
+            i.setQuant(cursor.getInt(1));
+            i.setNome_item(cursor.getString(2));
+            i.setVal(cursor.getFloat(3));
+            i.setId_lista(cursor.getInt(4));
+            itens.add(i);
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return itens;
+    }
+
+
     public void excluir(Item i){
         banco.delete("item", "id = ?", new String[]{i.getId().toString()} );
     }
@@ -65,14 +83,14 @@ public class ItemDAO {
 
     public void atualizar(Item item){
         ContentValues values = new ContentValues();
+        openDB();
         //"id", "quant", "nome_item", "val", "comprado","id_Lista"
         values.put("quant", item.getQuant());
         values.put("nome_item", item.getNome_item());
         values.put("val", item.getVal());
         values.put("id_Lista", item.getId_lista());
-//        values.put("nota", lista.getNota());
-        banco.update("lista", values, "id = ?", new String[]{item.getId().toString()});
-;
+        banco.update("item", values, "id=?", new String[]{item.getId().toString()});
+        closeDB();
     }
 
     private void closeDB() throws SQLException {

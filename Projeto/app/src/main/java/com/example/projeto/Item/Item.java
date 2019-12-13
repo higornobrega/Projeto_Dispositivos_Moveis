@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Item implements Serializable {
     private Integer id;
     private Integer id_lista;
-    private  Integer quant;
+    private Integer quant;
     private String nome_item;
     private Float val;
     private boolean comprado;
@@ -37,11 +37,11 @@ public class Item implements Serializable {
         this.nome_item = nome_item;
     }
 
-    public Float getVal() {
+    public float getVal() {
         return val;
     }
 
-    public void setVal(Float val) {
+    public void setVal(float val) {
         this.val = val;
     }
 

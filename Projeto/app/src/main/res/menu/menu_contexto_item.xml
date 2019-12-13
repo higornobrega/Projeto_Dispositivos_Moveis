@@ -6,4 +6,6 @@
         android:id="@+id/it_excluirItem"
         android:onClick="excluirItem"
         android:title="@string/excluir" />
+    <item android:title="@string/Atualizar"
+        android:onClick="atualizar"/>
 </menu>
